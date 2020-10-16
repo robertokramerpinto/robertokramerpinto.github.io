@@ -67,7 +67,7 @@ The logit fuction transforms the linear regression into a smoother continuous ou
 - Logit Function will take any continuous input and output a value [0,1]
 - This output can also be interpreted as a score and/or probability of an observation belonging to class 1
 
-![](/assets/ml/supervised/algos/2.png)
+![](/assets/ml/supervised/algos/4.png)
 
 **Notes**
 - It's a good baseline model
@@ -151,3 +151,16 @@ logreg.coef_
 # Examine the intercept 
 logreg.intercept_
 ````
+
+> How to interpret logistic regression coefficients?
+- A 1 unit increase in a given variable is associated with a <coef_1> unit increase/decrease in the __log-odds__ of the
+target.
+
+Positive coefficients increase the __log-odds__ of the response (and thus increase the probability) and negative 
+coefficients decrease the __log-odds__ of the response variable (and thus decrease the probability).
+
+The target is the baseline log-odds level for the response (if all variables are null).
+
+![](/assets/ml/supervised/algos/3.png)
+
+
