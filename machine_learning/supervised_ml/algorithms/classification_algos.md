@@ -73,6 +73,8 @@ The logit fuction transforms the linear regression into a smoother continuous ou
 - It's a good baseline model
 - It's generally stable and present lower overfitting levels 
 
+### Sklearn Implementation 
+
 ```python
 from sklearn.linear_model import LogisticRegression
 
@@ -94,3 +96,58 @@ print(f"ROC-AUC Test: {round(auc_test,4)}")
 >>ROC-AUC Test: 0.8653
 ```
 
+### Hyperparameters
+
+* C
+    * Inverse of the regularization strenght. 
+    * The higher the C value, the lower the regularization
+
+* Penalty
+    * Indicates the type of regularization
+    * l1 (LASSO), l2 (Ridge)
+
+* solver
+    * algorithm used in the optimization problem
+    * Some solvers do not accept all regularization types
+
+* Class weight
+    * weights associated with classes in the form {label:weight}
+    * Default -> 1
+    * accepts dict or 'balanced'; Balanced automatically adjusts the weights invers. proportional to class freq. (n_samples / (n_classes * np.bincount(y)))
+
+````python
+from sklearn.model_selection import GridSearchCV
+# Create the parameter grid based on the results of random search 
+param_grid = {
+    "C": [0.001, 0.01, 0.5, 0.1],
+    "penalty":["l1","l2"],
+    "random_state": [42],
+    "max_iter":[1000],
+    "n_jobs":[-1]
+}
+
+# Create a based model
+model = LogisticRegression()
+# Instantiate the grid search model
+grid_search = GridSearchCV(estimator = model, param_grid = param_grid, 
+                          cv = 5, n_jobs = -1, verbose = 2)
+
+# Fit the grid search to the data
+grid_search.fit(X,y)
+
+# Best Model
+best_model = grid_search.best_estimator_
+optimal_parameters = grid_search.best_params_
+
+````
+
+### Model Outputs
+
+**Coefficients**
+
+````python
+# examine the coefficients
+logreg.coef_
+# Examine the intercept 
+logreg.intercept_
+````
