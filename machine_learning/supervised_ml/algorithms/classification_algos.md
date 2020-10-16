@@ -1,20 +1,36 @@
 # Supervised Machine Learning
 
-## Classification Algorithms
+Let's explorer some binary classification algorithms:
+
+> KNN
+
+> Naive Bayes
+
+> Logistic Regression
 
 > Decision Trees
 
 > Random Forest
 
-> Boosting
+> Boosting Algorithms
 - XGBoost Classifier 
 - LGBM Classifier
 - CatBoost Classifier 
 
+# Code Part
+
+Let's start by importing general python libraries and load initial data
 ````python
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
 
-df = pd.read_csv("data.csv")
-
+data = pd.read_csv("data.csv")
+data.head().T
 ````
+![](/assets/ml/supervised/algos/1.png)
+
+The dataset that we'll be using for this example is the Heart Disease dataset (DriveData competition).
 
