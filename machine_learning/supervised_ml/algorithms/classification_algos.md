@@ -6,7 +6,7 @@ Let's explorer some binary classification algorithms:
 
 > Naive Bayes
 
-> Logistic Regression
+> [Logistic Regression](#logistic-regression)
 
 > Decision Trees
 
@@ -34,3 +34,8 @@ data.head().T
 
 The dataset that we'll be using for this example is the Heart Disease dataset (DriveData competition).
 
+
+
+## Logistic Regression
+
+Logistic Regression
