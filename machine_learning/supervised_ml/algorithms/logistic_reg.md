@@ -1,25 +1,26 @@
-# Supervised Machine Learning
+# Logistic Regression
 
-Let's explorer some binary classification algorithms:
+Logistic Regression is a linear model used for classification. It's a regression method that outputs the probability 
+of a binary target variable based on a given feature space. The logistic regression models the log-probability (belong to 
+a given class).
 
-> KNN
+The sklearn Logistic Regression model can be applied to both binary and multiclass classification problems. 
 
-> Naive Bayes
+**Linear x Logistic Models**
 
-> [Logistic Regression](#logistic-regression)
+The logit fuction transforms the linear regression into a smoother continuous output, bounded by 2 fixed limits (0 & 1).
+- Logit Function will take any continuous input and output a value [0,1]
+- This output can also be interpreted as a score and/or probability of an observation belonging to class 1
 
-> Decision Trees
+![](/assets/ml/supervised/algos/2.png)
 
-> Random Forest
+**Notes**
+- It's a good baseline model
+- It's generally stable and present lower overfitting levels 
 
-> Boosting Algorithms
-- XGBoost Classifier 
-- LGBM Classifier
-- CatBoost Classifier 
+## Sklearn Implementation
 
-# Code Part
-
-Let's start by importing general python libraries and load initial data
+Let's start by importing general python libraries and loading initial data
 ````python
 import pandas as pd
 import numpy as np
@@ -52,28 +53,6 @@ assert len(X_test) == len(y_test)
 
 For simplicity reasons, the selected dataset only contains numerical features so we can skip the categorical encoding
 step in this case. 
-
-## Logistic Regression
-
-Logistic Regression is a linear model used for classification. It's a regression method that outputs the probability 
-of a binary target variable based on a given feature space. The logistic regression models the log-probability (belong to 
-a given class).
-
-The sklearn Logistic Regression model can be applied to both binary and multiclass classification problems. 
-
-**Linear x Logistic Models**
-
-The logit fuction transforms the linear regression into a smoother continuous output, bounded by 2 fixed limits (0 & 1).
-- Logit Function will take any continuous input and output a value [0,1]
-- This output can also be interpreted as a score and/or probability of an observation belonging to class 1
-
-![](/assets/ml/supervised/algos/2.png)
-
-**Notes**
-- It's a good baseline model
-- It's generally stable and present lower overfitting levels 
-
-### Sklearn Implementation 
 
 ```python
 from sklearn.linear_model import LogisticRegression
