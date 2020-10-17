@@ -1,16 +1,8 @@
 # Boosting Algorithms
 
-
-
 ## XGBoost Classifier
 
-
-
-
-
 ## LightGBM Classifier 
-
-```https://lightgbm.readthedocs.io/en/latest/index.html```
 
 LightGBM is a gradient boosting framework that uses tree based learning algorithms. 
 
@@ -88,9 +80,7 @@ print(f"ROC-AUC Test: {round(auc_test,4)}")
 
 ### Hyperparameters
 
-```https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html#lightgbm.LGBMClassifier```
-
->Num_leaves
+> Num_leaves
 - Maximum tree leaves for base learners.
 > max_depth (int, optional (default=-1))
 - Maximum tree depth for base learners, <=0 means no limit.
@@ -98,12 +88,12 @@ print(f"ROC-AUC Test: {round(auc_test,4)}")
 - Boosting learning rate. 
 > n_estimators (int, optional (default=100))
 - Number of boosted trees to fit.
->objective (string, callable or None, optional (default=None))
+> objective (string, callable or None, optional (default=None))
 - Specify the learning task and the corresponding learning objective or a custom objective function to be used (see note below). Default: ‘regression’ for LGBMRegressor, ‘binary’ or ‘multiclass’ for LGBMClassifier, ‘lambdarank’ for LGBMRanker.
 > class_weight (dict, 'balanced' or None, optional (default=None))
 - Weights associated with classes in the form {class_label: weight}. Use this parameter only for multi-class classification task; for binary classification task you may use is_unbalance or scale_pos_weight parameters. 
 The ‘balanced’ mode uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as n_samples / (n_classes * np.bincount(y)). If None, all classes are supposed to have weight one. Note, that these weights will be multiplied with sample_weight (passed through the fit method) if sample_weight is specified.
->min_split_gain (float, optional (default=0.))
+> min_split_gain (float, optional (default=0.))
 - Minimum loss reduction required to make a further partition on a leaf node of the tree.
 > min_child_weight (float, optional (default=1e-3))
 - Minimum sum of instance weight (hessian) needed in a child (leaf).
@@ -173,6 +163,7 @@ optimal_parameters = grid_search.best_params_
 
 #CV best results
 print(f"CV Best scores: {round(grid_search.best_score_,4)}")
+>>  CV Best scores: 0.8278
 ````
 
 ### Model Outputs
