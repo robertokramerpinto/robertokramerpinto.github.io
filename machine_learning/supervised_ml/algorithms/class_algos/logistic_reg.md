@@ -132,7 +132,7 @@ logreg.intercept_
 ````
 
 > How to interpret logistic regression coefficients?
-- A 1 unit increase in a given variable is associated with a <coef_1> unit increase/decrease in the __log-odds__ of the
+- A 1 unit increase in a given variable is associated with a given coefficient unit increase/decrease in the **log-odds** of the
 target.
 
 Positive coefficients increase the __log-odds__ of the response (and thus increase the probability) and negative 
