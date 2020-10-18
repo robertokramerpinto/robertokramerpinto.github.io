@@ -259,5 +259,64 @@ final_grid.train(x=x,
                  training_frame = df_h1n1,
                  seed = SEED,
                  max_runtime_secs = 3600)
+
+## Sort the grid models by AUC
+sorted_final_grid = final_grid.get_grid(sort_by='auc',decreasing=True)
+sorted_final_grid[0]
 ````
 
+### XGBoost
+
+XGBoost is a supervised learning algorithm that implements a process called boosting to yield accurate models. 
+Boosting refers to the ensemble learning technique of building many models sequentially, with each new model attempting 
+to correct for the deficiencies in the previous model. In tree boosting, each new model that is added to the ensemble is a decision tree. 
+
+XGBoost in H2O supports multicore.
+
+Let's run our XGBoost Model.
+
+````python
+# Let's combine a Grid Search and CV
+from h2o.estimators import H2OXGBoostEstimator
+from h2o.grid.grid_search import H2OGridSearch
+
+SEED = 42
+n_folds = 5
+
+xgboost_grid = {
+    "max_depth" : [4,5,7,10],
+    "learn_rate" : [0.1],
+    "sample_rate" : [0.7,0.9,1],
+    'col_sample_rate': [0.7,0.9],
+    'reg_lambda': [1.0,1.5],
+    'reg_alpha': [0.0,1.0],
+    "seed": [SEED]
+}
+
+model = H2OXGBoostEstimator(nfolds=n_folds,
+                            seed=SEED,
+                            ntrees=10000,
+                            stopping_rounds = 5,
+                            stopping_metric = "AUC",
+                            stopping_tolerance = 1e-4)
+
+# Grid Initiation and Parameters
+search_criteria = {'strategy': "Cartesian"}
+
+cv_grid = H2OGridSearch(model=model,hyper_params = xgboost_grid,
+                       search_criteria = search_criteria)
+
+#Train grid search
+cv_grid.train(x=x, 
+              y=y,
+              training_frame = df_h1n1,
+              seed = SEED)
+
+# Get the grid results, sorted by validation AUC
+grid_results = cv_grid.get_grid(sort_by='auc', decreasing=True)
+best_model = grid_results[0]
+print(best_model)
+
+print(best_model.actual_params)
+
+````
