@@ -204,7 +204,8 @@ grid_results[0]
 ````
 In our example, this was the best model (results)
 
-![](/assets/ml/h2o/1.png)
+![](/assets/ml/h2o/2.png)
+![](/assets/ml/h2o/3.png)
  
 We can also run a Random Search Grid based on our previous estimated parameters values. 
 
@@ -226,6 +227,7 @@ search_criteria_tune = {'strategy': "RandomDiscrete",
                    }
 
 gbm_final_grid = H2OGradientBoostingEstimator(distribution='bernoulli',
+                    nfolds=n_folds,
                     ## more trees is better if the learning rate is small enough 
                     ## here, use "more than enough" trees - we have early stopping
                     ntrees=10000,
