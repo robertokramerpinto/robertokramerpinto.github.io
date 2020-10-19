@@ -1,6 +1,6 @@
 Welcome to my Machine Learning and Analytics Page.
 
-# Topics
+# Machine Learning 
 
 ## Supervised Machine Learning
 
@@ -16,4 +16,16 @@ Welcome to my Machine Learning and Analytics Page.
 * Pysparkling Water
 
 > Imbalanced Data
-* 
+* [__Handling Imbalanced Data__](machine_learning/imb_data/imb_data.md)
+
+# Azure
+
+## Storage
+
+### Non-Relation DBs
+
+#### CosmosDB
+* [__CosmosDB Overview__](azure/cosmosdb.md)
+
+
+

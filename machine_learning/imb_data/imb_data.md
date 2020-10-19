@@ -299,5 +299,138 @@ df_final_results
 
 ### Resampling Techniques
 
+For resampling techniques let's use the imblearn library.
 
+SMOTE-NC can be applied to categorical variables but need to pay attention to categorical pre_processing first. 
+Especially with new labels in test. 
+
+````python
+import imblearn
+
+n_folds = 5
+SEED = 42
+
+cv = StratifiedKFold(n_splits=n_folds, random_state=SEED, shuffle=True)
+
+sample_train = train.sample(frac=0.15,random_state=SEED).reset_index(drop=True)
+
+X = sample_train[features]
+y = sample_train[target]
+
+X_test = test[features]
+y_test = test[target]
+
+
+models_dict = {'LGBM':LGBMClassifier(), 
+               'XGBoost': XGBClassifier(),
+               'RF': RandomForestClassifier(),
+               'LR': LogisticRegression(),
+              'KNN': KNeighborsClassifier(),
+              'ExtraTree': ExtraTreesClassifier(),
+              'DT': DecisionTreeClassifier()}
+
+resampling_dict = {'No Resampling':None,
+                    'RandomUnderSampling': imblearn.under_sampling.RandomUnderSampler(random_state=SEED),
+                   #'SMOTENC':imblearn.over_sampling.SMOTENC(categorical_features=categorical_cols,
+                   #                                         random_state=SEED),
+                   'RandomOversampling':imblearn.over_sampling.RandomOverSampler(random_state=SEED)}
+
+resampling_names = []
+model_names = []
+validation_scores = []
+test_scores = []
+
+for resampler_name in resampling_dict.keys():
+    #print(f"Resamplet name {resampler_name}")
+    for model_name in models_dict.keys():
+        #print(f"Model name {model_name}")
+        folds_scores = []
+        for i, (train_index, val_index) in enumerate(cv.split(X=X, y=y)):
+            #print(f"Fold {i}")
+            # Creating Train and Validation under the CV framework
+            df_train, df_validation = sample_train.loc[train_index], sample_train.loc[val_index]
+            X_train, y_train = df_train[features], df_train[target]
+            X_validation, y_validation = df_validation[features], df_validation[target]
+            
+            if resampler_name != 'No Resampling':
+                # For each fold > Resamples > FE Pipe > Model > Val Score
+                resampler = resampling_dict[resampler_name]
+                X_train_resampled, y_train_resampled = resampler.fit_resample(X_train, y_train)
+            else:
+                X_train_resampled, y_train_resampled = X_train, y_train
+                
+            # FE Pipeline 
+            fe_pipe = Pipeline([
+                # Treating New Categories
+                ("Unseen Labels", transformers.TreatNewLabels(variables=categorical_cols)),
+                # Numerical Missing Imputation
+                ("Value Imputer", transformers.NumericalNAImputerValue(variables=numerical_cols, add_column=False)),
+                # Categorical Missing Imputation
+                ("Categorical Imputer Label", transformers.CategoricalImputerLabel(variables=categorical_cols)),
+                # Categorical Encoding --> OHE
+                ("Categorical Encoding OHE", transformers.CategoricalEncoderOHE()),
+                # Scaling
+                ("Scaling", transformers.AdjustedScaler())])
+
+            fe_pipe.fit(X_train_resampled, y_train_resampled)
+            new_X_train = fe_pipe.transform(X_train_resampled)
+            new_X_validation = fe_pipe.transform(X_validation)
+
+            selected_model = models_dict[model_name]
+            selected_model.fit(new_X_train, y_train_resampled)
+
+            # Validation Scores
+            y_val_scores = selected_model.predict_proba(new_X_validation)[:,1]
+            val_rocauc = roc_auc_score(y_validation, y_val_scores)
+            folds_scores.append(val_rocauc)
+        
+        avg_val_scores = np.mean(folds_scores)
+        validation_scores.append(avg_val_scores)
+        resampling_names.append(resampler_name)
+        model_names.append(model_name)
+
+        # Test Results
+        if resampler_name != 'No Resampling':
+            # For each fold > Resamples > FE Pipe > Model > Val Score
+            resampler = resampling_dict[resampler_name]
+            X_resampled, y_resampled = resampler.fit_resample(X, y)
+        else:
+            X_resampled, y_resampled = X, y
+        
+        # FE Pipeline 
+        fe_pipe = Pipeline([
+            # Treating New Categories
+            ("Unseen Labels", transformers.TreatNewLabels(variables=categorical_cols)),
+            # Numerical Missing Imputation
+            ("Value Imputer", transformers.NumericalNAImputerValue(variables=numerical_cols, add_column=False)),
+            # Categorical Missing Imputation
+            ("Categorical Imputer Label", transformers.CategoricalImputerLabel(variables=categorical_cols)),
+            # Categorical Encoding --> OHE
+            ("Categorical Encoding OHE", transformers.CategoricalEncoderOHE()),
+            # Scaling
+            ("Scaling", transformers.AdjustedScaler())])
+
+        fe_pipe.fit(X_resampled, y_resampled)
+        new_X_resampled = fe_pipe.transform(X_resampled)
+        new_X_test = fe_pipe.transform(X_test)
+        
+        selected_model = models_dict[model_name]
+        selected_model.fit(new_X_resampled, y_resampled)
+        # Test Scores
+        y_test_scores = selected_model.predict_proba(new_X_test)[:,1]
+        test_rocauc = roc_auc_score(y_test, y_test_scores)
+        test_scores.append(test_rocauc)
+
+df_results = pd.DataFrame({"model":model_names,
+                          "resampler":resampling_names,
+                          "cv_avg_metric":validation_scores,
+                          "test_metric":test_scores})
+df_results
+````
+
+![](/assets/ml/imb_data/6.png)
+
+![](/assets/ml/imb_data/7.png)
+
+![](/assets/ml/imb_data/8.png)
 
