@@ -118,3 +118,16 @@ shap.plots.scatter(shap_values[:,"AGE"])
 The SHAP value for a given feature represents the average shap values accross the entire dataset given the feature
 distribution.
 
+For each observation we can also understand the overall features contribution to the model's outcome compared to the
+baseline output:
+
+````python
+# Individual contribution --> SHAP VALUES
+sample_ind = 15
+# the waterfall_plot shows how we get from shap_values.base_values to model.predict(X)[sample_ind]
+shap.plots.waterfall(shap_values[sample_ind], max_display=14)
+
+````
+![](/assets/ml/shap/6.png)
+
+
