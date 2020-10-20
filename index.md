@@ -18,6 +18,9 @@ Welcome to my Machine Learning and Analytics Page.
 > Imbalanced Data
 * [__Handling Imbalanced Data__](machine_learning/imb_data/imb_data.md)
 
+## Interpretability 
+* [__SHAP__](machine_learning/shap/shap.md)
+
 # Azure
 
 ## Storage
