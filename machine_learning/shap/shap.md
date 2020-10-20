@@ -24,7 +24,7 @@ between baseline (expected) model output and the current model output for the pr
 The easiest way to see this is through a waterfall plot that starts our background prior expectation for a home 
 price E[f(x)], and then adds features one at a time until we reach the current model output f(x):
 
-![](/assets/ml/shap/5.png)
+![](/assets/ml/shap/7.png)
 
 SHAP values are always referencing the difference between a given output and the expected value (baseline).
 
@@ -58,7 +58,7 @@ linear_model_coeff = pd.DataFrame({"feature":X.columns,
                                    "coefficient": model.coef_})
 linear_model_coeff
 ````
-![](/assets/ml/shap/1.png)
+![](/assets/ml/shap/9.png)
 
 The traditional way to understand a linear model is to analyze its coefficients. These coefficients will tell us how much 
 our model output will vary depending on the change of the input features. 
@@ -85,7 +85,7 @@ shap.plots.partial_dependence("AGE",
                               feature_expected_value=True,
                               ace_opacity=0,pd_opacity=1)
 ````
-![](/assets/ml/shap/3.png)
+![](/assets/ml/shap/10.png)
 
 For this linear model, the grey horizontal line represents the Expected value of the model when applied to the boston 
 housing dataset. The grey vertical line represents the average value of the AGE feature. The blue line (dependence plot)
@@ -128,6 +128,6 @@ sample_ind = 15
 shap.plots.waterfall(shap_values[sample_ind], max_display=14)
 
 ````
-![](/assets/ml/shap/6.png)
+![](/assets/ml/shap/11.png)
 
 
