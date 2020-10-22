@@ -112,7 +112,9 @@ After the training and scoring process is completed, we can check the evaluation
 
 
 
-#### Data Transformation Steps
+### Data Transformation Steps
+
+Let's review now some available data transformation steps
 
 > Select Columns in Dataset
 - As the name says, user can select a subset of columns from the input dataset
@@ -120,6 +122,8 @@ After the training and scoring process is completed, we can check the evaluation
 >Edit Metadata
 - This step allow us to rename column names and modify data types
 
+### Algorithms
+![](/assets/azure/ml/14.png)
 
 
 

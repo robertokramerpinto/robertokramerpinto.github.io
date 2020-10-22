@@ -35,4 +35,10 @@ Welcome to my Machine Learning and Analytics Page.
 * [__CosmosDB Overview__](azure/cosmosdb.md)
 
 
+# Certifications
+
+## Azure 
+
+### DP - 100
+* [__Azure DP 100__](azure/certdp100/dp100_1.md)
 
