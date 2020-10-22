@@ -70,6 +70,56 @@ information about it: missing values, unique values, distribution metrics (mean,
 
 ![](/assets/azure/ml/8.png)
 
+### Data Processing
+
+Here is the step where we'll be processing and modifying our data. 
+
+Let's look at one simple example, where we load our initial data, create the target variable and drop/select cols.
+![](/assets/azure/ml/9.png)
+
+In the first step we're calling a SQL transformation where we create a "target" column based on the initial dataset.
+The second step is the data selection one, where we're dropping irrelevant cols and selecting the new target variable
+(excluding the old one).
+![](/assets/azure/ml/10.png)
+
+After executing the initial steps we can always check the output dataset. 
+
+Next steps consist in filling missing values for both numerical and categorical columns. After that, we split our 
+dataset for training and validation (using stratified distribution based on the target variable).
+
+Important to say that the data split step outputs 2 datasets, the left one is the one which you define the split rate
+(70% in our example, the one we'll be using as the training set as well).
+
+![](/assets/azure/ml/11.png)
+
+### Modeling
+
+For the modeling phase, let's select the Train model function. Here we have 2 inputs: left --> algorithms, right -->
+training set. The model we'll be using in this example is the binary logistic regression algorithm with l2 penalization (LASSO).
+
+After training our model using the selected training set from split data step, we can score the predictions based on
+the test set and evaluate our test results. 
+
+![](/assets/azure/ml/12.png)
+
+After the training and scoring process is completed, we can check the evaluation output.
+![](/assets/azure/ml/13.png)
+
+
+
+ 
+
+
+
+
+#### Data Transformation Steps
+
+> Select Columns in Dataset
+- As the name says, user can select a subset of columns from the input dataset
+
+>Edit Metadata
+- This step allow us to rename column names and modify data types
+
 
 
 
