@@ -23,6 +23,10 @@ Welcome to my Machine Learning and Analytics Page.
 
 # Azure
 
+## Azure Machine Learning
+### ML Studio
+* [__ML Studio Intro__](azure/ml/mlstudio1.md)
+
 ## Storage
 
 ### Non-Relation DBs
