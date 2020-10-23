@@ -1,5 +1,7 @@
 # Running Scripts into AzureML
 
+## Simple Script Example
+
 In this section, let's try to understand the basics of running python scripts in order to execute ML flows in Azure. 
 
 Major objectives in this sections:
@@ -74,10 +76,6 @@ resources
 > aml_url = run.get_portal_url()
 - URL to monitor the run progress
 
-**Note: Compute Target**
-
-In this scenario, we expect the compute target to be running. 
-![](/assets/azure/cert/dp100/12.png) 
 
 **Code Execution**
 
@@ -90,3 +88,15 @@ If we go to the our Workspace, we can see our experiment in the Experiments page
 
 We can also explore the logs of the execution in detail: Outputs + logs
 ![](/assets/azure/cert/dp100/17.png)
+
+**Note: Compute Target**
+
+In this scenario, we expect the compute target to be running. 
+![](/assets/azure/cert/dp100/12.png) 
+
+If we execute the script and the compute target not running the run won't be executed. 
+- It will be Pending -> Queue Status
+![](/assets/azure/cert/dp100/18.png)
+
+After the compute target is running again, the pending execution run will be completed.
+ 
