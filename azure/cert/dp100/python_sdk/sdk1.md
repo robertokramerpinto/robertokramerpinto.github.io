@@ -204,4 +204,14 @@ resources
 In this scenario, we expect the compute target to be running. 
 ![](/assets/azure/cert/dp100/12.png) 
 
+**Code Execution**
 
+After executing the control script code in our terminal:
+![](/assets/azure/cert/dp100/13.png)
+
+If we go to the our Workspace, we can see our experiment in the Experiments page
+![](/assets/azure/cert/dp100/15.png)
+![](/assets/azure/cert/dp100/16.png)
+
+We can also explore the logs of the execution in detail: Outputs + logs
+![](/assets/azure/cert/dp100/17.png)
