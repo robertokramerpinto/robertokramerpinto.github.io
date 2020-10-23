@@ -9,7 +9,7 @@ Main objectives of this sections are:
 - Understand and use Azure ML Classes (Environment, Run, Metrics)
 - Submit, run and review training script outputs
 
-## Creating a training script (sklearn models)
+## Creating a simple training script (sklearn models)
 
 In this example, let's see how to use Azure ML resources to train a sklearn model. 
 
@@ -157,6 +157,35 @@ if __name__ == '__main__':
 Next, let's execute the control script:
 
 ````python 04_run_train_bin_class.py````
+
+![](/assets/azure/cert/dp100/20.png)
+
+After executed, we can check our logging metrics:
+![](/assets/azure/cert/dp100/21.png)
+
+#### Logging
+In ````train.py```` we can access the run object from within the training script itself by using the ````Run.get_context()````
+method and use it to log metrics:
+
+`````python
+# in train.py
+run = Run.get_context()
+...
+run.log('loss', loss)
+`````
+Metrics in Azure Machine Learning are:
+- Organized by experiment and run, so it's easy to keep track of and compare metrics.
+- Equipped with a UI so you can visualize training performance in the studio.
+- Designed to scale, so you keep these benefits even as you run hundreds of experiments.
+
+**Folder Structure**
+
+This is the output of our current folder structure:
+![](/assets/azure/cert/dp100/22.png)
+
+## Create E2E pipeline
+
+
 
 
 
