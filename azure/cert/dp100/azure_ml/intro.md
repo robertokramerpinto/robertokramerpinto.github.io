@@ -118,9 +118,10 @@ if __name__=='__main__':
     ws = get_ws()
     print(ws)
 ````
-````shell script
+````
 python 01_connect_workspace.py 
 ````
+
 After running the shell command, a new window will be prompt asking us for manual authentication.
 
 **Automatic Authentication**
