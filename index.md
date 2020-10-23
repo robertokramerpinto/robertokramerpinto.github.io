@@ -41,4 +41,6 @@ Welcome to my Machine Learning and Analytics Page.
 
 ### DP - 100
 * [__Azure DP 100__](azure/cert/dp100/dp100_1.md)
+* [__Business & Data Science__](azure/cert/general/business_ds.md)
+* [__Azure ML Overview__](azure/cert/azure_ml/intro.md)
 
