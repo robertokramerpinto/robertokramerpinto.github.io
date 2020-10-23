@@ -188,12 +188,16 @@ if __name__=='__main__':
 
     print(ws)
 ````
+
 After running the automated option:
-````shell script
+
+````
 python 01_connect_workspace.py --ws_auth_type 2
 ````
+
 We get the desired output from the Workspace connection:
-````shell script
+
+````
 Workspace.create(name='test_1', subscription_id='974f9871-2375-47c7-bfd5-54e55b74fbdd', resource_group='cloudgurutraining')
 ````
 
