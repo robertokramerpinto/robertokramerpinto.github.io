@@ -6,8 +6,6 @@ it's a cloud-based environment you can use to train, deploy, automate, manage, a
 It integrates several Azure services, from data, modeling, DevOps and other tools, facilitating a robust implementation 
 of complex analytical solutions. 
 
-![](/assets/azure/cert/dp100/2.png)
-
 **Why to use Azure Machine Learning?**
 - Simplify ML building models with AutomatedML
 - Easy scaling model training in a cloud environment
@@ -20,7 +18,6 @@ This is also a general picture of the end-to-end Ml cycle integrating several Az
 
 User can interact with Azure ML resources in several ways. For example:
 ![](/assets/azure/cert/dp100/8.png)
-
 
 
 **Azure ML Workspace**
