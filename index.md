@@ -43,4 +43,6 @@ Welcome to my Machine Learning and Analytics Page.
 * [__Azure DP 100__](azure/cert/dp100/dp100_1.md)
 * [__Business & Data Science__](azure/cert/dp100/general/business_ds.md)
 * [__Azure ML Overview__](azure/cert/dp100/azure_ml/intro.md)
+* Python SDK
+    * [__Connections and Settings__](azure/cert/dp100/python_sdk/sdk1.md)
 
