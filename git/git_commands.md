@@ -49,6 +49,19 @@ There are also configuration properties we can change:
 ````git config --global core.editor "usr/bin/vim```` Set default text editor
 * can use nano, etc just need to include all path to binary editor
 
+Example:
+
+````shell script
+[cloud_user@ip-10-0-0-221 ~]$ git config --global user.name "cloud_user"
+[cloud_user@ip-10-0-0-221 ~]$ git config --global user.email "cloud_user@mylabserver.com"
+[cloud_user@ip-10-0-0-221 ~]$ git config --global core.editor "/usr/bin/vi"
+[cloud_user@ip-10-0-0-221 ~]$ git config --list
+user.name=cloud_user
+user.email=cloud_user@mylabserver.com
+core.editor=/usr/bin/vi
+[cloud_user@ip-10-0-0-221 ~]$ 
+````
+
 **Configuration file**
 
 All changes will also appear in our root configuration file ````~/.gitconfig````

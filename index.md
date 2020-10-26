@@ -18,8 +18,24 @@ Welcome to my Machine Learning and Analytics Page.
 > Imbalanced Data
 * [__Handling Imbalanced Data__](machine_learning/imb_data/imb_data.md)
 
+## Unsupervised Machine Learning
+
+
 ## Interpretability 
 * [__SHAP__](machine_learning/shap/shap.md)
+
+# Time Series
+* * [__Time Series - Introduction_](ts/intro.md)
+
+
+
+
+# Recommendation Systems
+
+
+# Cases
+
+
 
 # Azure
 
@@ -53,5 +69,8 @@ Welcome to my Machine Learning and Analytics Page.
 * [__Docker Commands__](docker/commands.md)
 
 # Git 
+
 * [__Git & Github__](git/git.md)
 * [__Git Commands__](git/git_commands.md)
+
+# Airflow
