@@ -25,9 +25,7 @@ Welcome to my Machine Learning and Analytics Page.
 * [__SHAP__](machine_learning/shap/shap.md)
 
 # Time Series
-* * [__Time Series - Introduction_](ts/intro.md)
-
-
+* [__Time Series - Introduction__](ts/intro.md)
 
 
 # Recommendation Systems
