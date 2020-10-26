@@ -83,6 +83,7 @@ You use this information to determine which training run produces the best model
 
 
 ## Creating an Azure Machine Learning Workspace
+
 ### Create an azure ml workspace
 
 #### Using the Azure Portal
@@ -92,11 +93,89 @@ To create a ML workspace through the Portal, we can search for the machine learn
 
 It's necessary to assign a resource group, a name for the workspace, select the region and the user can also configure
 advanced network connection properties to allow public/private connections as well. 
+
 ![](/assets/azure/cert/dp100/24.png)
 
 After validation and creation steps, we will be able to access the ML workspace environment.
+
 ![](/assets/azure/cert/dp100/25.png)
+
+On the left pane we can see several properties and layers to manage and monitor our ML workspace. Some latest updates 
+have been made, changing the location of some properties like assets that have been integrated directly inside the 
+ML Studio. 
+
+Most of the ML experiments will be handled inside the ML Studio from now on, and the high-level view of the WS will be 
+used to configure general properties (not specific related to ML workflows) like security (IAM - access control), activity
+logs, monitoring, etc.
+
+#### Resouces attached to an Azure ML Workspace
+
+![](/assets/azure/cert/dp100/28.png)
+
+Whenever we create a ML workspace, we'll also automatically create other resources attached to the ML workspace. At this
+time there are 4 resources created and linked to the ML workspace: Storage account, Container Registry, Application Insights and Key Vault. 
+
+It's also important to understand that the costs involved when we launch a WS is also including each one of those services. 
+
+> Storage Account
+* It's the default datastore for our workspace
+* It's a General-purpose (v2 from today) account with all default data types (blob, tables, queue and files)
+
+![](/assets/azure/cert/dp100/29.png)
+
+> Container Registry
+* Used to register Docker Containers used during training and model deployment
+* Some properties include:
+    * Geo-replication
+    * OCI artifact repository
+    * Automated container building and patching
+    * Integrated security 
+
+![](/assets/azure/cert/dp100/30.png)
+
+> Application Insights
+* Used to store monitoring information about our models
+* Includes information related to:
+    * Request rates, response rates and response times
+    * Failure rates
+    * Dependency rates
+    * Exceptions
+
+![](/assets/azure/cert/dp100/31.png)
+
+> Key Vault
+* Security resource
+* Used to store secrets used by compute targets and other sensitive information needed by the workspace
+* A Key-vault secret is anything we want to keep control over:
+    * API Keys
+    * Passwords
+    * Certificates
+* It's mainly used to:
+    * Securely store secrets and keys
+    * Monitor access and use
+    * Simplify administration
+
+![](/assets/azure/cert/dp100/32.png)
+
+
 
 
 ### Configure workspace settings
+
 ### Manage a workspace by using Azure ML Studio
+
+Azure ML Studio is a tool used to execute ML workflows. 
+Each Azure ML Studio will be linked to a **subscription and workspace**.
+
+![](/assets/azure/cert/dp100/26.png)
+
+After creating/selecting your Azure ML Studio plaftform the user will see this interface:
+
+![](/assets/azure/cert/dp100/27.png)
+
+On the left pane we can see all resources available for the ML Studio: tools to create a ML flow, Assets created from the
+ML flow and general resources like compute and datastores. 
+
+
+ 
+
