@@ -36,6 +36,8 @@ The Azure ML workspace is the top-level resource for Azure Machine learning.
 It's a centralized environment used to:
 - Manage all resources used to build,train and deploy ml models
 - Store assets created during the ML workflow
+- Allows users to create and work with artifacts 
+- Provides a history of training runs (Experiments)
 
 Each workspace is tied to an Azure subscription and resource group, and has an associated SKU. Ideally each project should
 have its own Azure ML Workspace.  
@@ -80,3 +82,21 @@ You use this information to determine which training run produces the best model
 - Final step, a combination of the registered model and scoring script
 
 
+## Creating an Azure Machine Learning Workspace
+### Create an azure ml workspace
+
+#### Using the Azure Portal
+To create a ML workspace through the Portal, we can search for the machine learning resource, as indicated below:
+
+![](/assets/azure/cert/dp100/23.png)
+
+It's necessary to assign a resource group, a name for the workspace, select the region and the user can also configure
+advanced network connection properties to allow public/private connections as well. 
+![](/assets/azure/cert/dp100/24.png)
+
+After validation and creation steps, we will be able to access the ML workspace environment.
+![](/assets/azure/cert/dp100/25.png)
+
+
+### Configure workspace settings
+### Manage a workspace by using Azure ML Studio

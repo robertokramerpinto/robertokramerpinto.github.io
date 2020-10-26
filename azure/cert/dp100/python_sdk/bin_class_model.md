@@ -183,7 +183,14 @@ Metrics in Azure Machine Learning are:
 This is the output of our current folder structure:
 ![](/assets/azure/cert/dp100/22.png)
 
-## Create E2E pipeline
+## Registering and Deploying Model
+
+Now, let's see how we can improve a bit our ML solution. In this section, let's add some layers to the process:
+- Read input data from Blob storage
+- Save and Register model
+- Deploy model
+
+
 
 
 

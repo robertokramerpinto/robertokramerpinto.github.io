@@ -48,3 +48,6 @@ Welcome to my Machine Learning and Analytics Page.
     * [__Running Scripts__](azure/cert/dp100/python_sdk/scripts.md)
     * [__Binnary Class Model__](azure/cert/dp100/python_sdk/bin_class_model.md)
 
+# Docker
+
+* [__Docker Commands__](docker/commands.md)
