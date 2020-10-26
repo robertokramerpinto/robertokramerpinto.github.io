@@ -108,6 +108,8 @@ Most of the ML experiments will be handled inside the ML Studio from now on, and
 used to configure general properties (not specific related to ML workflows) like security (IAM - access control), activity
 logs, monitoring, etc.
 
+### Configure workspace settings
+
 #### Resouces attached to an Azure ML Workspace
 
 ![](/assets/azure/cert/dp100/28.png)
@@ -120,8 +122,18 @@ It's also important to understand that the costs involved when we launch a WS is
 > Storage Account
 * It's the default datastore for our workspace
 * It's a General-purpose (v2 from today) account with all default data types (blob, tables, queue and files)
+* It's created with basic settings: LRS (locally redundant storage), Hot Tier, etc.
 
 ![](/assets/azure/cert/dp100/29.png)
+
+The storage account will contain all data relative to our workspace and experiments. We can access the crerated storage 
+account and open the Storage Explorer to check inside our Blob containers all information saved from our workspace (metrics, snapshots, etc.)
+Files will be under File Shares and Blob containers. 
+
+Notebooks will be inside the FileSystem (from our azure storage).
+
+![](/assets/azure/cert/dp100/33.png)
+![](/assets/azure/cert/dp100/34.png)
 
 > Container Registry
 * Used to register Docker Containers used during training and model deployment
@@ -143,8 +155,13 @@ It's also important to understand that the costs involved when we launch a WS is
 
 ![](/assets/azure/cert/dp100/31.png)
 
+* We're measuring within Azure Insights information relative to our applications that can be later on used by other 
+services like PowerBI, Alerts, Rest API, etc. 
+
+![](/assets/azure/cert/dp100/35.png)
+
 > Key Vault
-* Security resource
+* Security resource -> Store secrets (all kind of secrets)
 * Used to store secrets used by compute targets and other sensitive information needed by the workspace
 * A Key-vault secret is anything we want to keep control over:
     * API Keys
@@ -156,11 +173,6 @@ It's also important to understand that the costs involved when we launch a WS is
     * Simplify administration
 
 ![](/assets/azure/cert/dp100/32.png)
-
-
-
-
-### Configure workspace settings
 
 ### Manage a workspace by using Azure ML Studio
 
