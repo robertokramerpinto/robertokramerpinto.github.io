@@ -91,6 +91,30 @@ In order to make git start tracking our files (which live inside our working dir
 
 ````git commit -a -m "<commit message>```` Commit a modified file in the staging area
 
+### Ignoring Files
+
+````.gitignore```` File used to manage files we don't want to track 
+* Ignore files based on patterns
+
+Inside the .gitignore file we can have patterns for data or notebook files. We can also use this file to avoid tracking
+passwords and sensitive information. Example:
+
+````ignore
+# IDE settings
+.vscode
+.idea
+.DS_Store
+
+## Local files
+# Credentials
+# SSH keys (.pem files)
+# Secret config files
+
+# Data
+*.csv
+*.h5
+````
+
 
 
 
