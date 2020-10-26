@@ -95,12 +95,6 @@ This is typical list of files inside the .git folder
 * Folder that contains hashed versions of content files that have been committed
 * It's our git DB
 
-# Local Repository
-
-We can create locally our repository through git commands or we can directly clone a remote
-repository in our local system. 
-
-## Creating a local repo
 
 
 

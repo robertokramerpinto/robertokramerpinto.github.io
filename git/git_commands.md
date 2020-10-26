@@ -22,5 +22,24 @@ apt-get install -y git
 
 ````ls -lh .git/```` list all files within .git/ repo folder
 
+## Repository configuration
+
+````git config```` Base command to configure several elements of git env
+
+Whenever we start a git environment we need to define at least 2 configuration parameters: username and email.
+This information is relevant only to track who made changes to the files. 
+
+````git config --global user.name "<username>"  ```` 
+
+````git config --global user.email "<useremail>"  ````
+
+* Base command to configure several elements of git env
+* global flag is used to pass same user and email to all projects
+
+````git config --list```` Displays configuration file information
+
+
+
+
 
 
