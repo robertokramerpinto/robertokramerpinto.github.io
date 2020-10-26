@@ -51,3 +51,7 @@ Welcome to my Machine Learning and Analytics Page.
 # Docker
 
 * [__Docker Commands__](docker/commands.md)
+
+# Git 
+* [__Git & Github__](git/git.md)
+* [__Git Commands__](git/git_commands.md)
