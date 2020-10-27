@@ -10,3 +10,10 @@ References:
 * https://learning.oreilly.com/library/view/hands-on-time-series/9781484259924/html/492113_1_En_1_Chapter.xhtml
 * https://www.udemy.com/course/series-temporais-com-python/learn/lecture/16374040#overview
 
+Time series data presents specific characteristics that can be distinguished from other datasets:
+* Data is presented among time intervals
+    * These intervals can be days, hours, minutes, seconds, etc.
+* There's a natural order between observations, related to time 
+    * The time series data needs to be ordered by time
+
+![](/assets/ts/2.png)
