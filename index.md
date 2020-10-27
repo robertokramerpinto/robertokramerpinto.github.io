@@ -26,7 +26,8 @@ Welcome to my Machine Learning and Analytics Page.
 
 # Time Series
 * [__Time Series - Introduction__](ts/intro.md)
-
+* Cases
+    * * [__Walmart Sales Forecast__](ts/walmart.md)
 
 # Recommendation Systems
 

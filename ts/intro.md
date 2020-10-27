@@ -118,8 +118,31 @@ airline_data['Thousands of Passengers'].plot()
 ````
 ![](/assets/ts/12.png)
 
+In this example, we can see a clear upwards trend in the number of passengers over time. Also the it seems the trend is 
+increase on a slightly higher rate than the linear, so a multiplicative model could be more indicated in this situation
+to perform the ETS decomposition. 
 
+In python, we can use the statsmodel library to run those models. 
 
+````python
+from statsmodels.tsa.seasonal import seasonal_decompose
+
+components = seasonal_decompose(airline_data['Thousands of Passengers'],
+                           model = 'multiplicative')
+
+# Accessing individual components
+# components.trend.plot()
+components.trend # series
+components.seasonal # series
+components.resid # series
+
+# Visualization
+from pylab import rcParams
+rcParams['figure.figsize'] = 12,8
+
+components.plot();
+````
+![](/assets/ts/13.png)
 
 # Characteristics and Properties in a TS
 
