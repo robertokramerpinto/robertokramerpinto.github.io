@@ -73,3 +73,4 @@ Welcome to my Machine Learning and Analytics Page.
 * [__Git Commands__](git/git_commands.md)
 
 # Airflow
+* [__Installation__](airflow/installation.md)

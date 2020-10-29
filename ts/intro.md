@@ -9,6 +9,8 @@ References:
 * https://learning.oreilly.com/library/view/practical-time-series/9781492041641/titlepage01.html
 * https://learning.oreilly.com/library/view/hands-on-time-series/9781484259924/html/492113_1_En_1_Chapter.xhtml
 * https://www.udemy.com/course/series-temporais-com-python/learn/lecture/16374040#overview
+* https://d1.awsstatic.com/whitepapers/time-series-forecasting-principles-amazon-forecast.pdf
+* https://towardsdatascience.com/time-series-analysis-in-python-an-introduction-70d5a5b1d52a
 
 **What is a Time Series ?**
 
