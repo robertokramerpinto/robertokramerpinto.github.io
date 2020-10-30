@@ -242,4 +242,34 @@ display(submission)
 ````
 ![](/assets/ts/21.png)
 
+This Distributed Random Forest Regressor presented a score of 5170.34305
+
+Now let's check the baseline XGBoost Performance:
+
+````python
+from pysparkling.ml import H2OXGBoostRegressor
+
+features = ['Store', 'Dept','IsHoliday','month', 'weekofyear','Type', 'Size','Temperature', 'Fuel_Price',
+           'CPI', 'Unemployment', 'fl_superbowl', 'fl_tksgiving', 'fl_xtmas', 'fl_laborday']
+cols_to_ignore = [col for col in cv_train_1.columns if col not in features]
+target = 'Weekly_Sales'
+
+estimator = H2OXGBoostRegressor(featuresCols=features, labelCol = target)
+
+model = estimator.fit(full_train)
+
+predictions = model.transform(full_test)
+submission = predictions.withColumn('Id',
+                                   F.concat(F.col('Store'),F.lit('_'),
+                                           F.col('Dept'),F.lit('_'),
+                                           F.col('Date')))\
+            .withColumnRenamed('prediction','Weekly_Sales')\
+            .select('Id','Weekly_Sales')
+````
+THe baseline XGBoost presented a 6527.89845 score. 
+
+## Testing some FE and Validation Framework
+
+
+
 
