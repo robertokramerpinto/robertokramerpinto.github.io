@@ -56,6 +56,62 @@ The goal is to find an optimal solution.
 
 ![](/assets/ml/theory/7.png)
 
+#### Identifying Bias and Variance
+
+We can use the mlxtend library.
+
+For comparison, the bias-variance decomposition of a bagging classifier, which should intuitively have a lower variance 
+compared than a single decision tree:
+
+````python
+from mlxtend.evaluate import bias_variance_decomp
+from sklearn.tree import DecisionTreeClassifier
+from mlxtend.data import iris_data
+from sklearn.model_selection import train_test_split
+
+
+X, y = iris_data()
+X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                    test_size=0.3,
+                                                    random_state=123,
+                                                    shuffle=True,
+                                                    stratify=y)
+
+
+
+tree = DecisionTreeClassifier(random_state=123)
+
+avg_expected_loss, avg_bias, avg_var = bias_variance_decomp(
+        tree, X_train, y_train, X_test, y_test, 
+        loss='0-1_loss',
+        random_seed=123)
+
+print('Average expected loss: %.3f' % avg_expected_loss)
+print('Average bias: %.3f' % avg_bias)
+print('Average variance: %.3f' % avg_var)
+>>Average expected loss: 0.062
+>>Average bias: 0.022
+>>Average variance: 0.040
+
+from sklearn.ensemble import BaggingClassifier
+
+tree = DecisionTreeClassifier(random_state=123)
+bag = BaggingClassifier(base_estimator=tree,
+                        n_estimators=100,
+                        random_state=123)
+
+avg_expected_loss, avg_bias, avg_var = bias_variance_decomp(
+        bag, X_train, y_train, X_test, y_test, 
+        loss='0-1_loss',
+        random_seed=123)
+
+print('Average expected loss: %.3f' % avg_expected_loss)
+print('Average bias: %.3f' % avg_bias)
+print('Average variance: %.3f' % avg_var)
+>>Average expected loss: 0.048
+>>Average bias: 0.022
+>>Average variance: 0.026
+````
 
 ## Overfitting
 
