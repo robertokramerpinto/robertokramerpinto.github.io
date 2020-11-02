@@ -19,6 +19,47 @@ Models tend to have higher accuracy on train data (on observations they have see
 differently on training and testing data, you should look to model validation to ensure you have the
 best performing model. 
 
+## Bias-Variance Tradeoff
+
+Whenever we're assessing a model's performance it's indicate to understand its variance and bias. In general terms, 
+a model's error can be decomposed into 3 parts: variance_error, bias_error, general_error. The decomposition of the 
+loss (error) helps us understand the learning algorithms, as these concepts are related to over/under fitting.
+
+In general terms:
+* High Variance --> Indicates **Overfitting**
+* High Bias --> Indicates **Underfitting**
+
+In high-level terms, we can say that:
+> Bias
+* Ability of the model to learn from data in order to make good predictions
+* In average, how far is your model from the observed values?
+* A high bias-error model indicates a low predictive power --> underfitting
+    * model is not able to do its function
+
+![](/assets/ml/theory/6.png)
+
+> Variance
+* Ability of the model to keep performance when facing a new set of data
+* Does you model's predictions vary too much when facing new data?
+* How stable is your model when facing different test sets?
+* A high variance-error model indicates overfitting
+    * Your model's results vary a lot when it faces different datasets
+
+![](/assets/ml/theory/5.png)
+
+**What is the trade-off?**
+
+The trade-off comes from the fact that generally it's not possible to improve both aspects together. If you want to reduce
+your bias, you'll increase your variance error. If you want to reduce your variance error, you'll increase your bias. 
+
+The goal is to find an optimal solution.
+
+![](/assets/ml/theory/7.png)
+
+
+## Overfitting
+
+
 ## Train, Validation & Test : Holdout samples
 
 The basic validation approach is to build holdout samples. The most indicated framework when using this path is to 
