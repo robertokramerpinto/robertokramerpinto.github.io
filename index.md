@@ -31,6 +31,7 @@ Welcome to my Machine Learning and Analytics Page.
     * * [__Walmart Sales Forecast__](ts/walmart.md)
 
 # Recommendation Systems
+* [__Introduction__](rs/intro.md)
 
 
 # Cases
