@@ -32,6 +32,7 @@ Welcome to my Machine Learning and Analytics Page.
 
 # Recommendation Systems
 * [__Introduction__](rs/intro.md)
+* [__Collaborative Filtering__](rs/CF.md)
 
 
 # Cases
