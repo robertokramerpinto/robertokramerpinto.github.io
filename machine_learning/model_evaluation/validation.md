@@ -1,6 +1,70 @@
+Validation and Metrics
 
+# Model Validation
 
-## CV framework
+Model validations is any machine learning framework developed to ensure your model performs as expected when facing new data.
+Model validation can be performed in several ways, but the general idea is to assess your model's performance on new data: data that 
+wasn't used during the training phase. 
+
+Model validation is not only about setting different datasets to test the model's performance but it's also about:
+* Selecting the best model (algorithm)
+* Selecting the best parameters
+* Selecting the best subset of features
+* Comparing results based on appropriate metrics
+
+> Model Validation Objective
+* Select best model possible --> best accuracy for new data
+
+**Train x Test Data**
+
+Models tend to have higher accuracy on train data (on observations they have seen before). When models perform 
+differently on training and testing data, you should look to model validation to ensure you have the
+best performing model. 
+
+## Train, Validation & Test : Holdout samples
+
+The basic validation approach is to build holdout samples. The most indicated framework when using this path is to 
+create 3 sets of data: training, validation & test sets.
+
+> Training data
+* data sample that will be used as the training reference
+
+> Validation data
+* Data sample used to tune hyperparameters, feature selection, etc...
+* Model with different characteristics are trained over the training set and evaluated over the validation set
+* Validation set is often used to select the best model and parameters
+
+> Test Set
+* After selecting the best model using the training + validation sets, usually we train the selected model over the 
+entire data (training + validation) and assess it's expected performance using the test set. 
+* Notice that the model selection and evaluation should be done using the validation data
+* The test set can't be used to select the best model
+* It's only used to serve as a reference for the model's performance over new data
+
+**Split Ratios**
+
+It depends on your problem but generally we use 60-20-20.
+
+![](/assets/ml/theory/2.png)
+
+### Implementation
+
+In python, we can implement this solution through the train_test_split function (sklearn.model_selection module). To
+obtain the training, validation and test samples, we need to run this method 2x. 
+
+````python
+from sklearn.model_selection import train_test_split
+SEED = 42
+
+# Create temporary training and final testing datasets
+X_temp, X_test, y_temp, y_test  = train_test_split(X=X, y=y, test_size=0.20, random_state=SEED)
+
+# Create the final training and validation datasets
+X_train, X_val, y_train, y_val  = train_test_split(X=X_temp, y=y_temp,test_size=0.20, random_state=SEED)
+
+````
+
+## Cross-Validation
 
 ### Python framework
 ````python
@@ -70,6 +134,16 @@ final_df.groupBy('id','kfold').agg(F.count(F.col('kfold')).alias('count')).where
 # Check target distribution among folds
 final_df.groupBy('kfold').agg(F.avg(F.col('Response'))).show()
 ````
+
+# Metrics
+
+## Regression
+
+Regression models are used when predicting **continuous** variables.
+
+### MAE (Mean Absolute Error)
+![](/assets/ml/theory/3.png)
+
 
 
 

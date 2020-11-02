@@ -6,7 +6,7 @@ users and items to predict items (or ratings for items) that the user may have a
 
 CF can also be divided into Memory-Based Collaborative Filtering and Model-Based Collaborative filtering.
 
-![](assets/rs/1.png)
+![](/assets/rs/1.png)
 
 ## Memory-Based Collaborative Filtering
 
@@ -139,13 +139,13 @@ similar they are to the target item i and then selects k most similar items.
 Similarity between two items is calculated by taking the ratings of the users who have rated both the items and 
 thereafter using the cosine similarity function.
 
-![](assets/rs/2.png)
+![](/assets/rs/2.png)
 
 Once we have the similarity between the items, the prediction is then computed by taking a weighted average of the target 
 user’s ratings on these similar items. The formula to calculate rating is very similar to the user based collaborative 
 filtering except the weights are between items instead of between users.
 
-![](assets/rs/3.png)
+![](/assets/rs/3.png)
 
 * The score is driven by item
 * For each item to score:
@@ -190,7 +190,7 @@ First we need to start computing the item-item relationship matrix.
     * close to 0 --> weak relation
 * We will be using the cosine similarity metric to detect such relationships
 
-![](assets/rs/4.png)
+![](/assets/rs/4.png)
 
 ````python
 import pandas as pd
@@ -205,7 +205,7 @@ data = pd.read_csv("lastfm1.csv")
 data.head()
 ````
 
-![](assets/rs/5.png)
+![](/assets/rs/5.png)
 
 Now, let's exclude the user id so we can work with a pure item-item raw matrix. Then, we'll normalize and create the
 similarity matrix.
@@ -236,7 +236,32 @@ def calculate_similarity(data_items):
 data_matrix = calculate_similarity(data_items)
 data_matrix.head()
 ````
-![](assets/rs/6.png)
+![](/assets/rs/6.png)
+
+The objective of the unitvector normalization is to reduce the weight of users who bought several items together. 
+A user who has bought only a pair will receive more importance, in this example.
+
+To extract the top-n similar items to a given product:
+````python
+data_matrix.loc['ac/dc'].nlargest(11)[1:]
+>>judas priest                0.195756
+>>iron maiden                 0.183430
+>>deep purple                 0.179657
+>>metallica                   0.179343
+>>kreator                     0.173701
+>>black sabbath               0.169489
+>>red hot chili peppers       0.167413
+>>rage against the machine    0.166582
+>>the offspring               0.156924
+>>motorhead                   0.154884
+````
+
+To get recommendations for a specific user:
+````python
+
+
+
+````
 
 
 > Item-item summary
