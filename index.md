@@ -9,8 +9,9 @@ Welcome to my Machine Learning and Analytics Page.
     * [__Logistic Regression__](machine_learning/supervised_ml/algorithms/class_algos/logistic_reg.md)
     * [__Boosting Classifiers__](machine_learning/supervised_ml/algorithms/class_algos/boosting.md)
 
-> Validation & Metrics
-* [__Model Validation & Metrics__](machine_learning/model_evaluation/validation.md)
+> Evaluation
+* [__Model Validation__](machine_learning/model_evaluation/validation.md)
+* [__Metrics__](machine_learning/model_evaluation/metrics.md)
 
 
 > H2O

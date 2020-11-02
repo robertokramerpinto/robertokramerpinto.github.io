@@ -1,5 +1,3 @@
-Validation and Metrics
-
 # Model Validation
 
 Model validations is any machine learning framework developed to ensure your model performs as expected when facing new data.
@@ -135,14 +133,6 @@ final_df.groupBy('id','kfold').agg(F.count(F.col('kfold')).alias('count')).where
 final_df.groupBy('kfold').agg(F.avg(F.col('Response'))).show()
 ````
 
-# Metrics
-
-## Regression
-
-Regression models are used when predicting **continuous** variables.
-
-### MAE (Mean Absolute Error)
-![](/assets/ml/theory/3.png)
 
 
 
